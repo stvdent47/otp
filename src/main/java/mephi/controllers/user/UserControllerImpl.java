@@ -51,6 +51,8 @@ public class UserControllerImpl implements UserController {
             return;
         }
 
+        logger.info("/users/register");
+
         try {
             RegisterDto registerData;
             try (InputStream inputStream = exchange.getRequestBody()) {
@@ -108,6 +110,8 @@ public class UserControllerImpl implements UserController {
             return;
         }
 
+        logger.info("/users/login");
+
         LoginDto loginData;
         try (InputStream inputStream = exchange.getRequestBody()) {
             loginData = this.gson.fromJson(
@@ -157,6 +161,13 @@ public class UserControllerImpl implements UserController {
 
     @Override
     public void generateOtp(HttpExchange exchange) {
+        String method = exchange.getRequestMethod();
+        if (!method.equalsIgnoreCase("post")) {
+            return;
+        }
+
+        logger.info("/users/generate-otp");
+
         GenerateOtpDto generateOtpDto;
         try (InputStream inputStream = exchange.getRequestBody()) {
             generateOtpDto = this.gson.fromJson(
@@ -208,6 +219,8 @@ public class UserControllerImpl implements UserController {
         if (!method.equalsIgnoreCase("post")) {
             return;
         }
+
+        logger.info("/users/validate-otp");
 
         ValidateOtpDto validateOtpData;
         try (InputStream inputStream = exchange.getRequestBody()) {

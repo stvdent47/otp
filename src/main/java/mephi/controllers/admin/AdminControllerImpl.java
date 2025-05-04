@@ -35,6 +35,8 @@ public class AdminControllerImpl implements AdminController {
             return;
         }
 
+        logger.info("/admin/get-users");
+
         List<User> users = this.userService.getAll();
 
         HttpTransport.sendResponse(
@@ -50,6 +52,8 @@ public class AdminControllerImpl implements AdminController {
         if (!method.equalsIgnoreCase("delete")) {
             return;
         }
+
+        logger.info("/admin/delete-user");
 
         URI uri = exchange.getRequestURI();
         String path = uri.getPath();
@@ -79,6 +83,8 @@ public class AdminControllerImpl implements AdminController {
         if (!method.equalsIgnoreCase("post")) {
             return;
         }
+
+        logger.info("/admin/change-otp-config");
 
         OtpConfigDto otpConfigData;
         try (InputStream inputStream = exchange.getRequestBody()) {
