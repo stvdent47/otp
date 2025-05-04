@@ -209,7 +209,7 @@ public class UserControllerImpl implements UserController {
             return;
         }
 
-        ValidateOtpDto validateOtpData;;
+        ValidateOtpDto validateOtpData;
         try (InputStream inputStream = exchange.getRequestBody()) {
             validateOtpData = this.gson.fromJson(
                 new String(inputStream.readAllBytes(), StandardCharsets.UTF_8),

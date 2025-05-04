@@ -6,7 +6,6 @@ import java.nio.charset.StandardCharsets;
 
 public class PasswordService {
     private static final int COST_FACTOR = 12;
-    private static PasswordService instance;
 
     public static String getPasswordHash(String password) {
         byte[] passwordBytes = password.getBytes(StandardCharsets.UTF_8);
